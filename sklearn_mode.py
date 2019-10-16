@@ -190,7 +190,7 @@ if __name__ == '__main__':
             print(tmp)
             rmse_total.append(tmp)
         accuracy = sklearn.metrics.accuracy_score(test_y, predict)  
-        print 'accuracy: %.2f%%' % (100 * accuracy)   
+        print('accuracy: %.2f%%' % (100 * accuracy))
         predict_total2.append(predict)
     predict_total1 = np.array(predict_total2)
     predict_total = predict_total1.transpose()
