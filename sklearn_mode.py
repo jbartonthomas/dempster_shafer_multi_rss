@@ -164,21 +164,21 @@ if __name__ == '__main__':
                  'GBDT':gradient_boosting_classifier,
     }  
       
-    print 'reading training and testing data...'  
+    print('reading training and testing data...')
     train_x, train_y, test_x, test_y = read_data(path)  
     num_train, num_feat = train_x.shape  
     num_test, num_feat = test_x.shape  
     is_binary_class = (len(np.unique(train_y)) == 56)  
-    print '******************** Data Info *********************'  
-    print '#training data: %d, #testing_data: %d, dimension: %d' % (num_train, num_test, num_feat)  
+    print('******************** Data Info *********************')
+    print('#training data: %d, #testing_data: %d, dimension: %d' % (num_train, num_test, num_feat) )
     
     predict_total2=[]
     rmse_total=[]
     for classifier in test_classifiers:  
-        print '******************* %s ********************' % classifier  
+        print('******************* %s ********************' % classifier )
         start_time = time.time()  
         model = classifiers[classifier](train_x, train_y)  
-        print 'training took %fs!' % (time.time() - start_time)  
+        print('training took %fs!' % (time.time() - start_time))
         predict = model.predict(test_x)  
         if model_save_file != None:  
             model_save[classifier] = model  
@@ -187,7 +187,7 @@ if __name__ == '__main__':
 #            recall = metrics.recall_score(test_y, predict)  
 #            print 'precision: %.2f%%, recall: %.2f%%' % (100 * precision, 100 * recall)  
             tmp = func_rmse(predict,test_y)
-            print tmp
+            print(tmp)
             rmse_total.append(tmp)
         accuracy = sklearn.metrics.accuracy_score(test_y, predict)  
         print 'accuracy: %.2f%%' % (100 * accuracy)   
