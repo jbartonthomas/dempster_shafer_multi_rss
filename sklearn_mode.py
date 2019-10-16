@@ -109,7 +109,7 @@ def svm_cross_validation(train_x, train_y):
     grid_search.fit(train_x, train_y)  
     best_parameters = grid_search.best_estimator_.get_params()  
     for para, val in best_parameters.items():  
-        print para, val  
+        print(para, val)
     model = SVC(kernel='rbf', C=best_parameters['C'], gamma=best_parameters['gamma'], probability=True)  
     model.fit(train_x, train_y)  
     return model  
